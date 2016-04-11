@@ -114,4 +114,3 @@ Requirements
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
 file for license rights and limitations (MIT).
-
