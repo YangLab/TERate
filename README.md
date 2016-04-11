@@ -9,5 +9,5 @@ Features
 * Measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 * Different time points should be calculated separately.
 
-### BAM file
+# BAM file
 Bam file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
