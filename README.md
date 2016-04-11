@@ -1,6 +1,6 @@
 # TERate
 -----------------------------------
-TERate is a computational pipeline to measure transcription elongation rates (TERs) with 4sUDRB-Seq.
+**TERate** is a computational pipeline to measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 
 ## Features
 
@@ -8,7 +8,7 @@ TERate is a computational pipeline to measure transcription elongation rates (TE
 * Different time points should be calculated separately.
 
 ## BAM format file
-Bam file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
+BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 
 ##Prerequisites
 
@@ -42,7 +42,7 @@ cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/spl
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
-* 4. To reduce time consumption of TERate, proposal for split ‘bedgraph file (accepted_hits.bedgraph)’ and ‘refFlat file (refFlat_bins.txt)’ into each chromosome with '***split_bedgraph.sh***' and '***split_refFlat.sh***' scripts.
+* 4. To reduce time consumption of TERate, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with '***split_bedgraph.sh***' and '***split_refFlat.sh***' scripts.
 Create ‘split’ work directory and split bedgraph and refFlat into 300 bp bins/windows.
 ```bash
 mkdir split
@@ -57,9 +57,9 @@ Calculate each bin reads number (Hits) with ‘nohup’ for backstage running.
 ls |grep "bin" |awk -F"_" '{print "nohup ../bedgraph_to_hits "$1"_bedgraph.txt "$1"_bin.txt > "$1"_hits.txt &"}' |sh
 ```
 
-* 6. When script '***bedgraph_to_hits***' finished, return to parent directory to combine all hit results and sort with gene name.
+* 6. When script '***bedgraph_to_hits***' finished, return to '**TERate_output**' directory to combine all hit results and sort with gene name.
 ```bash
-cd ../
+cd ../TERate_output/
 cat *_hits.txt > combine_hits.txt
 sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
@@ -68,7 +68,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```bash
 ./TER_calculate sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
 ```
-TERate_output.txt is the result of TERate pipeline.
+**TERate_output.txt** is the result of **TERate** pipeline.
 
 ###Note
 * refFlat.txt is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/master/example/ref_example.txt))
@@ -89,21 +89,21 @@ Download form UCSC Genome Browser.
 | exonEnds    | Exon end positions            |
 
 ##Output
-TERate_output.txt
+**TERate_output.txt**
 See details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/master/example/output_example.txt)
 
 | Field       | Description                           |
 | :---------: | :------------------------------------ |
-| chrom       | Chromosome                            |
+| geneName    | Name of gene                          |
 | isoformName | Name of isoform                       |
 | strand      | + or - for strand                     |
-| TER | Transcription elongation rate (bp/m)              |
+| TER | Transcription elongation rate (bp/m)          |
 
 Requirements
 -----------------------------------
-* [GCC]gcc version 4.6.1
+* [GCC] gcc version 4.6.1
 * [nohup] version 8.22 
-* [bedtools](https://github.com/arq5x/bedtools2) v2.19.0
+* [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
 -----------------------------------
