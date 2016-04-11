@@ -32,12 +32,12 @@ cd TERate_output
 cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/split_refFlat.sh TERate/bedgraph_to_hits TERate/TER_calculate ./TERate_output
 ```
 
-* 2. BAM to bedgraph with 'bam2bedgraph' script from bedtools
+* 2. BAM to bedgraph with 'bam2bedgraph' script from bedtools.
 ```bash
 ./bam2bedgraph accepted_hits.bam > accepted_hits.bedgraph
 ```
 
-* 3. Split refFlat.txt into 300-bp/bin windows with 'gene_to_window' script
+* 3. Split refFlat.txt (Download form UCSC Genome Browser) into 300-bp/bin windows with 'gene_to_window' script.
 ```bash
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
