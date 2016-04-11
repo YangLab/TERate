@@ -3,11 +3,11 @@ TERate is a computational pipeline to measure transcription elongation rates (TE
 
 Maintainer: Wei Xue (xuewei@picb.ac.cn)
 
-Features
+## Features
 --------
 
 * Measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 * Different time points should be calculated separately.
 
-BAM file
+### BAM file
 Bam file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
