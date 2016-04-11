@@ -28,9 +28,9 @@ export PATH="~/TERate/:$PATH";
 
 or
 
-mkdir TERate_result
-cd TERate_result
-cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/split_refFlat.sh TERate/bedgraph_to_hits TERate/ TER_calculate ./TERate_result
+mkdir TERate_output
+cd TERate_output
+cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/split_refFlat.sh TERate/bedgraph_to_hits TERate/ TER_calculate ./TERate_output
 ```
 
 * 2. BAM to bedgraph with “bam2bedgraph” script by bedtools
