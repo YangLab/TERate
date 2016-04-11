@@ -19,7 +19,7 @@ Bam file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 * [bedtools](https://github.com/arq5x/bedtools2)
 
 ##Usage: 
-To obtain average reads distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
+To obtain average reads (Hits) distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
 Following BAM format file was illustrated by the case of TopHat (v2.0.9) results of 4sUDRB-Seq 10 minute sample.
 * 1. Please add the TERate directory to your $PATH first or copy all scripts to your current work directory.
 ```bash
