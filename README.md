@@ -15,6 +15,7 @@ Bam file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 ###Software / Package
 
 * [bedtools](https://github.com/arq5x/bedtools2)
+* [GNU coreutils] (http://www.gnu.org/licenses/gpl.html)
 
 ##Usage: 
 -----------------------------------
@@ -101,6 +102,7 @@ See details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/m
 Requirements
 -----------------------------------
 * [GCC]gcc version 4.6.1
+* [nohup] version 8.22 
 * [bedtools](https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
@@ -112,3 +114,4 @@ Requirements
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
 file for license rights and limitations (MIT).
+
