@@ -65,9 +65,9 @@ cat split/*_hits.txt > combine_hits.txt
 sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
 
-* 7. Calculate transcription elongation rate for each gene with ***'TER_calculate'*** script.
+* 7. Calculate transcription elongation rate for each gene with ***'calculate_TER'*** script.
 ```bash
-./TER_calculate sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
+./calculate_TER sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
 ```
 **'TERate_output.txt'** is the result of **TERate** pipeline.
 
