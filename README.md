@@ -22,7 +22,7 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 To obtain average reads (Hits) distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
 Following BAM format file was illustrated by the case of TopHat (v2.0.9) results of 4sUDRB-Seq 10 minute sample.
 All C++ and shell scripts were marked ***'bold italic'***.
-* 1. Please add the **TERate** directory to your **$PATH** first or copy all scripts to your current work directory (**'TERate_output'**).
+* 1. Please add the TERate directory to your **$PATH** first or copy all scripts to your current work directory (**'TERate_output'**).
 ```bash
 export PATH="~/TERate/:$PATH";
 
@@ -43,7 +43,7 @@ cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/spl
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
-* 4. To reduce time consumption of **TERate**, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
+* 4. To reduce time consumption of TERate, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
 Create **'split'** work directory and split bedgraph and refFlat into 300 bp bins/windows.
 ```bash
 mkdir split
@@ -69,7 +69,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```bash
 ./calculate_TER sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
 ```
-**'TERate_output.txt'** is the result of **TERate** pipeline.
+**'TERate_output.txt'** is the result of TERate pipeline.
 
 ###Note
 * **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
@@ -89,8 +89,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 | exonEnds    | Exon end positions            |
 
 ##Output
-* **TERate_output.txt**
-See details in [the example file](https://github.com/YangLab/TERate/blob/master/example/TERate_output_example.txt)
+* See details in [the example file](https://github.com/YangLab/TERate/blob/master/example/TERate_output_example.txt).
 
 | Field       | Description                           |
 | :---------: | :------------------------------------ |
