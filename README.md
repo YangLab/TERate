@@ -99,19 +99,16 @@ See details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/m
 | TER | Transcription elongation rate (bp/m)              |
 
 Requirements
-------------
+-----------------------------------
 * [GCC]gcc version 4.6.1
 * [bedtools](https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
---------
-
+-----------------------------------
 **Zhang Y*, Xue W*, Li X, Zhang J, Chen S, Zhang JL, Yang L# and Chen LL#. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016, doi: http://dx.doi.org/10.1016/j.celrep.2016.03.058 
 
 ##License
--------
-
+-----------------------------------
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
 file for license rights and limitations (MIT).
-
