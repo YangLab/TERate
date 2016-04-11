@@ -32,7 +32,7 @@ cd TERate_output
 cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/split_refFlat.sh TERate/bedgraph_to_hits TERate/TER_calculate ./TERate_output
 ```
 
-* 2. BAM to bedgraph with 'bam2bedgraph' script from bedtools.
+* 2. BAM to bedgraph with '*bam2bedgraph*' script from bedtools.
 ```bash
 ./bam2bedgraph accepted_hits.bam > accepted_hits.bedgraph
 ```
@@ -107,7 +107,7 @@ Requirements
 
 ##Citation
 -----------------------------------
-**Zhang Y*, Xue W*, Li X, Zhang J, Chen S, Zhang JL, Yang L# and Chen LL#. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016, doi: http://dx.doi.org/10.1016/j.celrep.2016.03.058 
+Zhang Y*, Xue W*, Li X, Zhang J, Chen S, Zhang JL, Yang L# and Chen LL#. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016, doi: http://dx.doi.org/10.1016/j.celrep.2016.03.058 
 
 ##License
 -----------------------------------
