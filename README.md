@@ -15,7 +15,7 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 ###Software / Package
 
 * [bedtools](https://github.com/arq5x/bedtools2)
-* [GNU coreutils] (http://www.gnu.org/licenses/gpl.html)
+* [GNU coreutils](http://www.gnu.org/licenses/gpl.html)
 
 ##Usage: 
 -----------------------------------
@@ -59,8 +59,8 @@ ls |grep "bin" |awk -F"_" '{print "nohup ../bedgraph_to_hits "$1"_bedgraph.txt "
 
 * 6. When script '***bedgraph_to_hits***' finished, return to '**TERate_output**' directory to combine all hit results and sort with gene name.
 ```bash
-cd ../TERate_output/
-cat *_hits.txt > combine_hits.txt
+cd ..
+cat split/*_hits.txt > combine_hits.txt
 sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
 
@@ -71,8 +71,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 **TERate_output.txt** is the result of **TERate** pipeline.
 
 ###Note
-* refFlat.txt is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/master/example/ref_example.txt))
-Download form UCSC Genome Browser.
+* **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/master/example/ref_example.txt)).
 
 | Field       | Description                   |
 | :---------: | :---------------------------- |
@@ -89,7 +88,7 @@ Download form UCSC Genome Browser.
 | exonEnds    | Exon end positions            |
 
 ##Output
-**TERate_output.txt**
+* **TERate_output.txt**
 See details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/master/example/output_example.txt)
 
 | Field       | Description                           |
@@ -102,7 +101,7 @@ See details in [the example file](https://github.com/YangLab/CIRCexplorer/blob/m
 Requirements
 -----------------------------------
 * [GCC] gcc version 4.6.1
-* [nohup] version 8.22 
+* [nohup] GNU GPL version 3
 * [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
