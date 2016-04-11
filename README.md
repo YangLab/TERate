@@ -1,8 +1,6 @@
 # TERate
 TERate is a computational pipeline to measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 
-Maintainer: Wei Xue (xuewei@picb.ac.cn)
-
 Features
 --------
 
@@ -42,13 +40,13 @@ cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/spl
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
-* 4. To reduce time consumption of TERate, proposal for split ‘bedgraph file (accepted_hits.bedgraph)’ and ‘refFlat file (refFlat_bins.txt)’ into each chromosome with 'split_refFlat.sh' and 'split_bedgraph.sh' scripts.
+* 4. To reduce time consumption of TERate, proposal for split ‘bedgraph file (accepted_hits.bedgraph)’ and ‘refFlat file (refFlat_bins.txt)’ into each chromosome with 'split_bedgraph.sh' and 'split_refFlat.sh' scripts.
 Create ‘split’ work directory and split bedgraph and refFlat into 300 bp bins/windows.
 ```bash
 mkdir split
 cd split
+sh ../split_bedgraph.sh ../accepted_hits.bedgraph
 sh ../split_refFlat.sh ../refFlat_bins.txt
-sh ../split_bedgraph.sh ../accepted_hits.bedgraph 
 ```
 
 * 5. After 'split_refFlat.sh' and 'split_bedgraph.sh' finished then using 'bedgraph_to_hits' to calculate Hits for each bins/windows (~ 3-4 hr time consumption).
