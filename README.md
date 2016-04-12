@@ -8,6 +8,7 @@ Measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 Different time points should be calculated separately.
 
 ## BAM format file
+
 BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 
 ##Prerequisites
@@ -18,6 +19,7 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 * [GNU coreutils](http://www.gnu.org/licenses/gpl.html)
 
 ##Usage: 
+
 -----------------------------------
 To obtain average reads (Hits) distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
 Following BAM format file was illustrated by the case of TopHat (v2.0.9) results of 4sUDRB-Seq 10 minute sample.
@@ -75,6 +77,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 -----------------------------------
 
 ##Note
+
 Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
 
 | Field       | Description                   |
@@ -92,6 +95,7 @@ Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and Ref
 | exonEnds    | Exon end positions            |
 
 ##Output
+
 See details in [the example file](https://github.com/YangLab/TERate/blob/master/example/TERate_output_example.txt).
 
 | Field       | Description                           |
@@ -102,14 +106,17 @@ See details in [the example file](https://github.com/YangLab/TERate/blob/master/
 | TER | Transcription elongation rate (bp/m)          |
 
 ##Requirements
+
 * [GCC] gcc version 4.6.1
 * [nohup] GNU GPL version 3
 * [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
-**Zhang Y, Xue W**, Li X, Zhang J, Chen S, Zhang JL,**Yang L# and Chen LL#**. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016, doi: http://dx.doi.org/10.1016/j.celrep.2016.03.058 
+
+**[Zhang Y\*, Xue W\*, Li X, Zhang J, Chen S, Zhang JL,Yang L# and Chen LL#. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016](http://www.cell.com/cell-reports/fulltext/S2211-1247(16)30329-1?rss=yes).**
 
 ##License
+
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
 file for license rights and limitations (MIT).
