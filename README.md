@@ -28,7 +28,7 @@ All C++ and shell scripts were marked ***'bold italic'***.
 ```bash
 export PATH="~/TERate-master/:$PATH";
 
-or
+or copy all scripts to your current work directory ('TERate_output/')
 
 mkdir TERate_output
 cd TERate_output/
