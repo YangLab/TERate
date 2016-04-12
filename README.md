@@ -14,8 +14,8 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 
 ###Software / Package
 
-* [bedtools](https://github.com/arq5x/bedtools2)
-* [GNU coreutils](http://www.gnu.org/licenses/gpl.html)
+ [bedtools](https://github.com/arq5x/bedtools2)
+ [GNU coreutils](http://www.gnu.org/licenses/gpl.html)
 
 ##Usage: 
 -----------------------------------
@@ -72,8 +72,8 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
 **'TERate_output.txt'** is the result of TERate pipeline.
 
-###Note
-* **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
+##Note
+* Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
 
 | Field       | Description                   |
 | :---------: | :---------------------------- |
@@ -99,11 +99,11 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 | strand      | + or - for strand                     |
 | TER | Transcription elongation rate (bp/m)          |
 
-Requirements
+##Requirements
 -----------------------------------
-* [GCC] gcc version 4.6.1
-* [nohup] GNU GPL version 3
-* [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
+ [GCC] gcc version 4.6.1
+ [nohup] GNU GPL version 3
+ [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
 -----------------------------------
