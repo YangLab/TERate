@@ -40,7 +40,7 @@ cp ~/TERate-master/bedgraph_to_hits ../TERate_output/
 cp ~/TERate-master/TER_calculate ../TERate_output/
 ```
 
-* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools. And Split gene annotation file **refFlat.txt** (Download form UCSC Genome Browser) into 300 bp/bin windows with ***'gene_to_window'*** script.
+* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools. And Split gene annotation file **refFlat.txt** (Download form UCSC Genome Browser) into 300 bp bins/windows with ***'gene_to_window'*** script.
 ```bash
 ./bam2bedgraph accepted_hits.bam > accepted_hits.bedgraph
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
