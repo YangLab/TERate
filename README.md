@@ -1,11 +1,11 @@
 # TERate
------------------------------------
+
 **TERate** is a computational pipeline to measure transcription elongation rates (TERs) with 4sUDRB-Seq.
 
 ## Features
 
-* Measure transcription elongation rates (TERs) with 4sUDRB-Seq.
-* Different time points should be calculated separately.
+Measure transcription elongation rates (TERs) with 4sUDRB-Seq.  
+Different time points should be calculated separately.
 
 ## BAM format file
 BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
@@ -22,7 +22,7 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 To obtain average reads (Hits) distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
 Following BAM format file was illustrated by the case of TopHat (v2.0.9) results of 4sUDRB-Seq 10 minute sample.
 All C++ and shell scripts were marked ***'bold italic'***.
-* 1. Please add the TERate directory to your **$PATH** first or copy all scripts to your current work directory (**'TERate_output'**).
+* 1. Please add the TERate directory to your **$PATH** first or copy all scripts to your current work directory (**'TERate_output/'**).
 ```bash
 export PATH="~/TERate-master/:$PATH";
 
@@ -44,8 +44,8 @@ cp ~/TERate-master/TER_calculate ../TERate_output/
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
-* 3. To reduce time consumption of TERate, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
-Create **'split'** work directory and split bedgraph and refFlat into 300 bp bins/windows with ***'nohup'*** for backstage running.
+* 3. To reduce time consumption of TERate, proposal for split **'bedgraph file'** (accepted_hits.bedgraph) and **'refFlat file'** (refFlat_bins.txt) into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
+Create split work directory **'split/'** and split bedgraph and refFlat into 300 bp bins/windows with ***'nohup'*** for backstage running.
 ```bash
 mkdir split
 cd split/
@@ -59,7 +59,7 @@ Calculate each bin reads number (Hits) with ***'nohup'*** for backstage running.
 ls |grep "bin" |awk -F"_" '{print "nohup ../bedgraph_to_hits "$1"_bedgraph.txt "$1"_bin.txt > "$1"_hits.txt &"}' |sh
 ```
 
-* 5. When script ***'bedgraph_to_hits'*** finished, return to **'TERate_output'** directory to combine all hit results and sort with gene name.
+* 5. When script ***'bedgraph_to_hits'*** finished, return to **'TERate_output/'** directory to combine all hit results and sort with gene name.
 ```bash
 cd ../
 cat split/*_hits.txt > combine_hits.txt
@@ -70,7 +70,9 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```bash
 ./calculate_TER sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
 ```
-**'TERate_output.txt'** is the result of TERate pipeline.
+**'TERate_output.txt'** is the result of TERate pipeline.  
+
+-----------------------------------
 
 ##Note
 Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
@@ -100,17 +102,14 @@ See details in [the example file](https://github.com/YangLab/TERate/blob/master/
 | TER | Transcription elongation rate (bp/m)          |
 
 ##Requirements
------------------------------------
 * [GCC] gcc version 4.6.1
 * [nohup] GNU GPL version 3
 * [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
 ##Citation
------------------------------------
 **Zhang Y, Xue W**, Li X, Zhang J, Chen S, Zhang JL,**Yang L# and Chen LL#**. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016, doi: http://dx.doi.org/10.1016/j.celrep.2016.03.058 
 
 ##License
------------------------------------
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
 file for license rights and limitations (MIT).
