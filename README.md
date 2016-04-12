@@ -24,48 +24,49 @@ Following BAM format file was illustrated by the case of TopHat (v2.0.9) results
 All C++ and shell scripts were marked ***'bold italic'***.
 * 1. Please add the TERate directory to your **$PATH** first or copy all scripts to your current work directory (**'TERate_output'**).
 ```bash
-export PATH="~/TERate/:$PATH";
+export PATH="~/TERate-master/:$PATH";
 
 or
 
 mkdir TERate_output
-cd TERate_output
-cp TERate/bam2bedgraph TERate/gene_to_window TERate/split_bedgraph.sh TERate/split_refFlat.sh TERate/bedgraph_to_hits TERate/TER_calculate ./TERate_output
+cd TERate_output/
+cp ~/TERate-master/bam2bedgraph ../TERate_output/
+cp ~/TERate-master/gene_to_window ../TERate_output/
+cp ~/TERate-master/split_bedgraph.sh ../TERate_output/
+cp ~/TERate-master/split_refFlat.sh ../TERate_output/
+cp ~/TERate-master/bedgraph_to_hits ../TERate_output/
+cp ~/TERate-master/TER_calculate ../TERate_output/
 ```
 
-* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools.
+* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools. And Split gene annotation file **refFlat.txt** (Download form UCSC Genome Browser) into 300 bp/bin windows with ***'gene_to_window'*** script.
 ```bash
 ./bam2bedgraph accepted_hits.bam > accepted_hits.bedgraph
-```
-
-* 3. Split **refFlat.txt** (Download form UCSC Genome Browser) into 300 bp/bin windows with ***'gene_to_window'*** script.
-```bash
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
-* 4. To reduce time consumption of TERate, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
-Create **'split'** work directory and split bedgraph and refFlat into 300 bp bins/windows.
+* 3. To reduce time consumption of TERate, proposal for split ‘**bedgraph file (accepted_hits.bedgraph)**’ and ‘**refFlat file (refFlat_bins.txt)**’ into each chromosome with ***'split_bedgraph.sh'*** and ***'split_refFlat.sh'*** scripts.
+Create **'split'** work directory and split bedgraph and refFlat into 300 bp bins/windows with ***'nohup'*** for backstage running.
 ```bash
 mkdir split
-cd split
+cd split/
 sh ../split_bedgraph.sh ../accepted_hits.bedgraph
 sh ../split_refFlat.sh ../refFlat_bins.txt
 ```
 
-* 5. After ***'split_refFlat.sh'*** and ***'split_bedgraph.sh'*** finished then using ***'bedgraph_to_hits'*** to calculate Hits for each bins/windows (~ 3-4 hr time consumption).
+* 4. After ***'split_refFlat.sh'*** and ***'split_bedgraph.sh'*** finished, then using ***'bedgraph_to_hits'*** to calculate Hits for each bins/windows (~ 3-4 hr time consumption).
 Calculate each bin reads number (Hits) with ***'nohup'*** for backstage running.
 ```bash
 ls |grep "bin" |awk -F"_" '{print "nohup ../bedgraph_to_hits "$1"_bedgraph.txt "$1"_bin.txt > "$1"_hits.txt &"}' |sh
 ```
 
-* 6. When script ***'bedgraph_to_hits'*** finished, return to **'TERate_output'** directory to combine all hit results and sort with gene name.
+* 5. When script ***'bedgraph_to_hits'*** finished, return to **'TERate_output'** directory to combine all hit results and sort with gene name.
 ```bash
-cd ..
+cd ../
 cat split/*_hits.txt > combine_hits.txt
 sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
 
-* 7. Calculate transcription elongation rate for each gene with ***'calculate_TER'*** script.
+* 6. Calculate transcription elongation rate for each gene with ***'calculate_TER'*** script.
 ```bash
 ./calculate_TER sorted_hits.txt 10 300 |sort -k1,1 -k4,4nr |awk '{a[$1,++b[$1]]=$0}END{for(i in b)print a[i,1]}' > TERate_output.txt
 ```
