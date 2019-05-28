@@ -18,7 +18,7 @@ BAM file was originally mapped form TopHat, Bowtie, Bowtie2 or BWA.
 * [bedtools](https://github.com/arq5x/bedtools2)
 * [GNU coreutils](http://www.gnu.org/licenses/gpl.html)
 
-##Usage: 
+## Usage: 
 
 -----------------------------------
 To obtain average reads (Hits) distribution of 4sUDRB-Seq, BAM format file was converted to bedgraph format file firstly.
@@ -76,7 +76,7 @@ sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 
 -----------------------------------
 
-##Note
+## Note
 
 Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9)) below (see details in [the example file](https://github.com/YangLab/TERate/blob/master/example/refFlat.txt)).
 
@@ -94,7 +94,7 @@ Gene annotation file **refFlat.txt** is in the format ([Gene Predictions and Ref
 | exonStarts  | Exon start positions          |
 | exonEnds    | Exon end positions            |
 
-##Output
+## Output
 
 See details in [the example file](https://github.com/YangLab/TERate/blob/master/example/TERate_output_example.txt).
 
@@ -105,17 +105,17 @@ See details in [the example file](https://github.com/YangLab/TERate/blob/master/
 | strand      | + or - for strand                     |
 | TER | Transcription elongation rate (bp/m)          |
 
-##Requirements
+## Requirements
 
 * [GCC] gcc version 4.6.1
 * [nohup] GNU GPL version 3
 * [bedtools] (https://github.com/arq5x/bedtools2) v2.19.0
 
-##Citation
+## Citation
 
 **[Zhang Y\*, Xue W\*, Li X, Zhang J, Chen S, Zhang JL,Yang L# and Chen LL#. The Biogenesis of Nascent Circular RNAs. Cell Rep, 2016](http://www.cell.com/cell-reports/fulltext/S2211-1247(16)30329-1?rss=yes).**
 
-##License
+## License
 
 Copyright (C) 2016 YangLab.
 See the [LICENSE](https://github.com/YangLab/CIRCpseudo/blob/master/LICENSE)
