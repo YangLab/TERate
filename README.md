@@ -67,7 +67,7 @@ ls |grep "bin" |awk -F"_" '{print "nohup ../bedgraph_to_hits "$1"_bedgraph.txt "
 * 5. When script ***'bedgraph_to_hits'*** finished, return to **'TERate_output/'** directory to combine all hit results and sort with gene name.
 ```bash
 cd ../
-cat split/*_hits.txt > combine_hits.txt
+cat split/chr1_hits.txt split/chr2_hits.txt split/chr3_hits.txt split/chr4_hits.txt split/chr5_hits.txt split/chr6_hits.txt split/chr7_hits.txt split/chr8_hits.txt split/chr9_hits.txt split/chr10_hits.txt split/chr11_hits.txt split/chr12_hits.txt split/chr13_hits.txt split/chr14_hits.txt split/chr15_hits.txt split/chr16_hits.txt split/chr17_hits.txt split/chr18_hits.txt split/chr19_hits.txt split/chr20_hits.txt split/chr21_hits.txt split/chr22_hits.txt split/chrX_hits.txt split/chrY_hits.txt split/chrM_hits.txt > combine_hits.txt
 sort -k4,4 -k1,1 -k2,2n -k3,3nr combine_hits.txt > sorted_hits.txt
 ```
 
