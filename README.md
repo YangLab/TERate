@@ -39,9 +39,13 @@ cp ~/TERate-master/bedgraph_to_hits ../TERate_output/
 cp ~/TERate-master/TER_calculate ../TERate_output/
 ```
 
-* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools. And Split gene annotation file **refFlat.txt** (Download form UCSC Genome Browser) into 300 bp bins/windows with ***'gene_to_window'*** script.
+* 2. BAM to bedgraph with ***'bam2bedgraph'*** script from bedtools. And select longest isoform of gene, further to split gene annotation file **refFlat_hg38.txt** (Download form UCSC Genome Browser) into 300 bp bins/windows with ***'gee_to_window'*** script.
 ```bash
 ./bam2bedgraph accepted_hits.bam > accepted_hits.bedgraph
+
+perl -alne '$,="\t";print (@F[0,1],$F[5]-$F[4])' refFlat_hg38.txt |sort -k1,1 -k3,3gr |sort -k1,1 -u |cut -f 2 > refFlat_hg38_longiso.eid
+perl select_ID.pl refFlat_hg38.txt refFlat_hg38_longiso.eid 2 > refFlat.txt
+
 ./gene_to_window refFlat.txt 300 > refFlat_bins.txt
 ```
 
